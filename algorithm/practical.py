@@ -56,8 +56,59 @@ def morsePartialDecode(inputStringList):
 	"""
 
 	dictionaryFileLoc = './dictionary.txt'
+	dictionary = []
 	# Please complete this method to perform the above described function
-	pass
+
+	# start by storing dictionary as a list
+	with open(dictionaryFileLoc, 'r') as f:
+		data = f.readlines()
+		for word in data:
+			dictionary.append(word)
+	# lets do a merge sort the this massive list
+
+	for item in inputStringList:
+		case1 = item.replace('x','.')
+		case2 = item.replace('x','-')
+
+
+def mergeSort(inputList):
+
+    if(len(inputList) == 1):
+        return inputList
+    else:
+        midpoint = (len(inputList))/2
+        return merge(mergeSort(inputList[:midpoint]),mergeSort(inputList[midpoint:]))
+
+def merge(list1,list2):
+    pointer1 = 0
+    pointer2 = 0
+    result = []
+
+    if(list1 is None and list2 is None):
+        return None
+
+    if(list1 is None):
+        return list2
+
+    if(list2 is None):
+        return list1
+
+    while((pointer1 < len(list1)) and (pointer2 < len(list2))):
+        if(list1[pointer1][1] < list2[pointer2][1]):
+            result.append(list1[pointer1])
+            pointer1 = pointer1 + 1
+        else:
+            result.append(list2[pointer2])
+            pointer2 = pointer2 + 1
+
+    if(pointer1 < len(list1)):
+        result = result + list1[pointer1:]
+
+    if(pointer2 < len(list2)):
+        result = result + list2[pointer2:]
+
+    return result
+
 
 class Maze:
 	def __init__(self):
@@ -157,8 +208,8 @@ def mazeTest():
 	myMaze.addCoordinate(5,7,0)
 
 def main():
-	morseCodeTest()
-	# partialMorseCodeTest()
+	# morseCodeTest()
+	partialMorseCodeTest()
 	# mazeTest()
 
 if(__name__ == "__main__"):
