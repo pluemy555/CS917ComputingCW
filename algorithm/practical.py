@@ -3,19 +3,22 @@ import itertools
 # According to python documentation, dict is a has table
 # average case for searching hash table is O(1), worst case is O(n)
 morse={
-	'A': '.-',     	'B': '-...',   	'C': '-.-.', 
-	'D': '-..',    	'E': '.',      	'F': '..-.',
-	'G': '--.',    	'H': '....',   	'I': '..',
-	'J': '.---',   	'K': '-.-',    	'L': '.-..',
-	'M': '--',     	'N': '-.',     	'O': '---',
-	'P': '.--.',   	'Q': '--.-',   	'R': '.-.',
-	'S': '...',    	'T': '-',      	'U': '..-',
-	'V': '...-',   	'W': '.--',    	'X': '-..-',
-	'Y': '-.--',   	'Z': '--..',	'0': '-----',  
-	'1': '.----',  	'2': '..---',	'3': '...--',
-	'4': '....-', 	'5': '.....',	'6': '-....',
-	'7': '--...', 	'8': '---..',	'9': '----.' 
+'.-'	:'A',	'-...'	:'B',	'-.-.'	:'C',
+'-..'	:'D',	'.'		:'E',	'..-.'	:'F',
+'--.'	:'G',	'....'	:'H',	'..'	:'I',
+'.---'	:'J',	'-.-'	:'K',	'.-..'	:'L',
+'--'	:'M',	'-.'	:'N',	'---'	:'O',
+'.--.'	:'P',	'--.-'	:'Q',	'.-.'	:'R',
+'...'	:'S',	'-'		:'T',	'..-'	:'U',
+'...-'	:'V',	'.--'	:'W',	'-..-'	:'X',
+'-.--'	:'Y',	'--..'	:'Z',
+'-----'	:'0',	'.----'	:'1',	'..---'	:'2',
+'...--'	:'3',	'....-'	:'4',	'.....'	:'5',
+'-....'	:'6',	'--...'	:'7',	'---..'	:'8',
+'----.'	:'9',
+
 }
+
 
 def morseDecode(inputStringList):
 	"""
@@ -25,10 +28,9 @@ def morseDecode(inputStringList):
 	This method should convert the strings from morse code into english, and return the word as a string.
 
 	"""
-	word = ''
+	word=''
 	for item in inputStringList:
-		print(morse.get(item))
-		word = word.join(morse.get(item))
+		word = word + morse[item]
 	return(word)
 	# Please complete this method to perform the above described function
 
@@ -108,7 +110,7 @@ def morseCodeTest():
 def partialMorseCodeTest():
 
 	"""
-	This test program passes the partial morse code as a list of strings 
+	This test program passes the partial morse code as a list of strings
 	to the morsePartialDecode method. This is provided as a simple test example, but by
 	no means covers all possibilities, and you should fulfill the methods as described in their comments.
 	"""
